@@ -13,26 +13,44 @@ GAME RULES:
 
 
 
-
-var scores, roundScore, activePlayer, dice;
+///////////////////////////Variables- Global Scope/////////////
+var scores, roundScore, activePlayer;
 
 scores = [0,0];
 roundScore = 0;
 activePlayer = 1;
 
-dice = Math.floor(Math.random()*6)+1;
 
-document.querySelector("#current-"+ activePlayer).textContent= dice;
-// document.querySelector("#current-" + activePlayer).innerHTML = "<em>" + dice + "</em>";
+///////////////////////////////////////////////////////
 
 
-
-//Example: qSel for reading html
-var x = document.querySelector("#score-0").textContent;
-console.log(x);
-
-//Example qSel for changing CSS
+////hides dice image initially
 document.querySelector(".dice").style.display = "none";
+///player scores set to 0
+document.getElementById("score-0").textContent = "0";
+document.getElementById("score-1").textContent = "0";
+document.getElementById("current-0").textContent = "0";
+document.getElementById("current-1").textContent = "0";
+
+//////////////////anonomous function example//////
+document.querySelector('.btn-roll').addEventListener('click', function(){
+    //1. Random Number
+        var dice = Math.floor(Math.random()*6)+1;
+    //2. Display the result
+        var diceDOM = document.querySelector('.dice')
+        diceDOM.style.display = 'block';
+        diceDOM.src='dice-'+dice+'.png';
+
+    //3. Update roundscore IF rolled number is not 1
+});
+
+////////////////////////////////
+
+
+
+
+
+
 /////////////callback function example//////
 // function btn(){
 //     //do something
@@ -42,11 +60,16 @@ document.querySelector(".dice").style.display = "none";
 // document.querySelector('btn-roll')addEventListener('click', btn);
 
 ////////////////////////////////////////////////
-//////////////////anonomous function example//////
-// document.querySelector('btn-roll')addEventListener('click', function(){
-//     ///do something;
-// });
 
-////////////////////////////////
+// document.querySelector("#current-"+ activePlayer).textContent= dice;
+// document.querySelector("#current-" + activePlayer).innerHTML = "<em>" + dice + "</em>";
+
+
+
+//Example: qSel for reading html
+// var x = document.querySelector("#score-0").textContent;
+// console.log(x);
+
+//Example qSel for changing CSS
 
 
