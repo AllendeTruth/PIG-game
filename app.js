@@ -42,6 +42,13 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         diceDOM.src='dice-'+dice+'.png';
 
     //3. Update roundscore IF rolled number is not 1
+        if(dice > 1){
+            //add score
+            roundScore+= dice;
+            document.querySelector('#current-'+activePlayer).textContent = roundScore;
+        }else{
+            //next player
+        }
 });
 
 ////////////////////////////////
