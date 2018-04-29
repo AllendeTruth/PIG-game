@@ -18,6 +18,35 @@ var scores, roundScore, activePlayer, dice;
 
 scores = [0,0];
 roundScore = 0;
-activePlayer = 0;
+activePlayer = 1;
 
-dice = Math.random
+dice = Math.floor(Math.random()*6)+1;
+
+document.querySelector("#current-"+ activePlayer).textContent= dice;
+// document.querySelector("#current-" + activePlayer).innerHTML = "<em>" + dice + "</em>";
+
+
+
+//Example: qSel for reading html
+var x = document.querySelector("#score-0").textContent;
+console.log(x);
+
+//Example qSel for changing CSS
+document.querySelector(".dice").style.display = "none";
+/////////////callback function example//////
+// function btn(){
+//     //do something
+// };
+// btn();
+
+// document.querySelector('btn-roll')addEventListener('click', btn);
+
+////////////////////////////////////////////////
+//////////////////anonomous function example//////
+// document.querySelector('btn-roll')addEventListener('click', function(){
+//     ///do something;
+// });
+
+////////////////////////////////
+
+
