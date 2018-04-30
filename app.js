@@ -13,28 +13,16 @@ GAME RULES:
 
 
 
-///////////////////////////Variables- Global Scope/////////////
+
 var scores, roundScore, activePlayer;
-function start(){
-    scores = [0,0];
-    roundScore = 0;
-    activePlayer = 0;
-};
+
+start();
 
 
 
-///////////////////////////////////////////////////////
 
 
-////hides dice image initially
-document.querySelector(".dice").style.display = "none";
-///player scores set to 0
-document.getElementById("score-0").textContent = "0";
-document.getElementById("score-1").textContent = "0";
-document.getElementById("current-0").textContent = "0";
-document.getElementById("current-1").textContent = "0";
 
-//////////////////anonomous function example//////
 document.querySelector('.btn-roll').addEventListener('click', function(){
     //1. Random Number
         var dice = Math.floor(Math.random()*6)+1;
@@ -76,8 +64,6 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
    
 });
 
-////////////////////////////////
-
 function nextPlayer(){
     activePlayer === 0 ? activePlayer =1: activePlayer =0;
             roundScore = 0;
@@ -91,31 +77,27 @@ function nextPlayer(){
             document.querySelector('.dice').style.display = 'none';
 };
 
-document.querySelector('.btn-new').addEventListener('click', function(){
-    //reset player scores
-    start();
-});
+document.querySelector('.btn-new').addEventListener('click', start);
 
+function start(){
+    scores = [0,0];
+    roundScore = 0;
+    activePlayer = 0;
 
-/////////////callback function example//////
-// function btn(){
-//     //do something
-// };
-// btn();
+    document.querySelector(".dice").style.display = "none";
 
-// document.querySelector('btn-roll')addEventListener('click', btn);
+    document.getElementById("score-0").textContent = "0";
+    document.getElementById("score-1").textContent = "0";
+    document.getElementById("current-0").textContent = "0";
+    document.getElementById("current-1").textContent = "0"; 
+    document.getElementById('name-0').textContent = 'Player 1';
+    document.getElementById('name-1').textContent = 'Player 2';
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.add('active');
+};
 
-////////////////////////////////////////////////
-
-// document.querySelector("#current-"+ activePlayer).textContent= dice;
-// document.querySelector("#current-" + activePlayer).innerHTML = "<em>" + dice + "</em>";
-
-
-
-//Example: qSel for reading html
-// var x = document.querySelector("#score-0").textContent;
-// console.log(x);
-
-//Example qSel for changing CSS
 
 
