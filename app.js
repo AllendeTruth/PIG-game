@@ -15,10 +15,12 @@ GAME RULES:
 
 ///////////////////////////Variables- Global Scope/////////////
 var scores, roundScore, activePlayer;
+function start(){
+    scores = [0,0];
+    roundScore = 0;
+    activePlayer = 0;
+};
 
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
 
 
 ///////////////////////////////////////////////////////
@@ -47,7 +49,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
             roundScore+= dice;
             document.querySelector('#current-'+activePlayer).textContent = roundScore;
         }else{
-            //ternary
+            
             nextPlayer();
         }
 });
@@ -58,10 +60,20 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
     //update UI
         document.getElementById('score-'+activePlayer).textContent = scores[activePlayer];
 
-            document.querySelector('.dice').style.display = 'none';
-    //check if player won game
+        document.querySelector('.dice').style.display = 'none';
 
-   nextPlayer();
+        nextPlayer();
+    //check if player won game
+        if(scores[activePlayer]>=20){
+            document.querySelector('#name-'+activePlayer).textContent = 'Winner!';
+            document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.player-'+activePlayer + '-panel').classList.add('winner');
+            document.querySelector('.player-'+activePlayer + '-panel').classList.remove('active');
+            
+        }else{
+            nextPlayer();
+        }
+   
 });
 
 ////////////////////////////////
@@ -79,7 +91,10 @@ function nextPlayer(){
             document.querySelector('.dice').style.display = 'none';
 };
 
-
+document.querySelector('.btn-new').addEventListener('click', function(){
+    //reset player scores
+    start();
+});
 
 
 /////////////callback function example//////
