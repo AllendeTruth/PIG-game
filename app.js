@@ -46,7 +46,8 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function(){
-    //addcurrent score to players global score
+    if(gamePlaying){
+        //addcurrent score to players global score
         scores[activePlayer]+= roundScore;
     //update UI
         document.getElementById('score-'+activePlayer).textContent = scores[activePlayer];
@@ -64,7 +65,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         }else{
             nextPlayer();
         }
-   
+    }
 });
 
 function nextPlayer(){
